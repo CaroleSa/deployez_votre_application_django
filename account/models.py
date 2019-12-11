@@ -20,4 +20,4 @@ class User(AbstractUser):
     username = models.CharField(_('username'), null=True, max_length=150,
                                 validators=[django.contrib.auth.validators.
                                             UnicodeUsernameValidator()])
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
