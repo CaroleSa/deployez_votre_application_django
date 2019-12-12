@@ -1,7 +1,7 @@
 # Byte-compiled / optimized / DLL files
 purbeurre/settings/production.py
 purbeurre/staticfiles/
-
+.idea/
 __pycache__/
 *.py[cod]
 *$py.class
