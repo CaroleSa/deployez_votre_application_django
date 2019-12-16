@@ -6,14 +6,14 @@ branches:
   only:
     - staging
 
+env : DJANGO_SETTINGS_MODULE= « purbeurre.settings.travis »
+
 before_script:
   - pip install -r requirements.txt
   - psql -c 'create database travis_ci_test;' -U postgres
 
 services:
   - postgresql
-
-env : DJANGO_SETTINGS_MODULE= « purbeurre.settings.travis »
 
 script:
   - python manage.py migrate
