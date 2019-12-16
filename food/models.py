@@ -8,9 +8,9 @@
 import os
 from django.db import models
 from django.contrib.auth import get_user_model
-"""from django import setup
+from django import setup
 os.environ['DJANGO_SETTINGS_MODULE'] = 'purbeurre.settings'
-setup()"""
+setup()
 
 
 class Categorie(models.Model):
