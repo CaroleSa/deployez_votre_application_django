@@ -10,6 +10,10 @@ from django.contrib.auth import validators
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 import django
+import os
+from django import setup
+os.environ['DJANGO_SETTINGS_MODULE'] = 'purbeurre.settings.travis'
+setup()
 
 
 class User(AbstractUser):
