@@ -6,7 +6,7 @@
 
 # imports
 from unittest import TestCase
-from food.models import Food
+from food.models import Food, Categorie
 from django.contrib.auth import get_user_model
 
 
@@ -21,8 +21,20 @@ class TestViews(TestCase):
         self.user.objects.create_user(id='1', username='Null', email='test@test1.fr', password='testtest')
         self.id_user = 1
         self.id_food = 1
+        self.id_categorie = 1
 
     def test_add_favorites(self):
+        # insert food in Food table
+        Categorie.objects.create(name="name_test")
+        categorie_id = Categorie.objects.get(id=self.id_categorie)
+        Food.objects.create(name="name_test", categorie=categorie_id,
+                            nutrition_grade="A", url_picture="url_test",
+                            link="link_test", energy="100",
+                            proteins="100", fat="100",
+                            carbohydrates="100",
+                            sugars="100", fiber="100",
+                            sodium="100")
+
         # add favorites
         food = Food.objects.get(id=self.id_food)
         user = self.user.objects.get(id=self.id_user)
