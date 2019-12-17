@@ -16,6 +16,28 @@ class TestDatabase(TestCase):
     test_food_name_exists method
     test_categorie_name_exists method """
 
+    def setUp(self):
+        # create an food
+        id_categorie = 1
+        try:
+            Categorie.objects.get(id=id_categorie).delete()
+        except Categorie.DoesNotExist:
+            pass
+        try:
+            Food.objects.get(name="name_test").delete()
+        except Food.DoesNotExist:
+            pass
+
+        Categorie.objects.create(name="name_test")
+        categorie_id = Categorie.objects.get(id=id_categorie)
+        Food.objects.create(name="name_test", categorie=categorie_id,
+                            nutrition_grade="A", url_picture="url_test",
+                            link="link_test", energy="100",
+                            proteins="100", fat="100",
+                            carbohydrates="100",
+                            sugars="100", fiber="100",
+                            sodium="100")
+
     def test_categorie_data_exists(self):
         """ Verify that the database contains the categorie data """
         self.assertTrue(Categorie.objects.all().exists())
