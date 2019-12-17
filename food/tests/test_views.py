@@ -19,11 +19,24 @@ class TestViews(TestCase):
     def setUp(self):
         # create an user
         self.user = get_user_model()
-        self.user.objects.create_user(id='1', username='Null', email='test@test1.fr', password='testtest')
+        self.user_email = "test@test1.fr"
+        try:
+            self.user.objects.get(email=self.user_email).delete()
+        except self.user.DoesNotExist:
+            pass
+        self.user.objects.create_user(id='1', username='Null', email=self.user_email, password='testtest')
         self.id_user = 1
 
         # create an food
         id_categorie = 1
+        try:
+            Categorie.objects.get(name="name_test").delete()
+        except Categorie.DoesNotExist:
+            pass
+        try:
+            Food.objects.get(name="name_test").delete()
+        except Food.DoesNotExist:
+            pass
         Categorie.objects.create(name="name_test")
         categorie_id = Categorie.objects.get(id=id_categorie)
         Food.objects.create(name="name_test", categorie=categorie_id,
