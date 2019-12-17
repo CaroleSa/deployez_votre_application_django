@@ -70,7 +70,7 @@ class TestViews(TestCase):
 
     def test_delete_favorites(self):
         # delete favorites
-        food = Food.objects.get(id=self.id_food)
+        food = Food.objects.get(name="name_test")
         user = self.user.objects.get(id=self.id_user)
         food.favorites.remove(user)
 
