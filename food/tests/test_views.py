@@ -28,7 +28,6 @@ class TestViews(TestCase):
         self.user.objects.create_user(id=self.id_user, username='Null', email=self.user_email, password='testtest')
 
         # create an food
-        id_categorie = 1
         try:
             Categorie.objects.get(name="name_test").delete()
         except Categorie.DoesNotExist:
@@ -38,7 +37,7 @@ class TestViews(TestCase):
         except Food.DoesNotExist:
             pass
         Categorie.objects.create(name="name_test")
-        categorie_id = Categorie.objects.get(id=id_categorie)
+        categorie_id = Categorie.objects.get(name="name_test")
         Food.objects.create(name="name_test", categorie=categorie_id,
                             nutrition_grade="A", url_picture="url_test",
                             link="link_test", energy="100",
