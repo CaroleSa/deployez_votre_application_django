@@ -15,7 +15,7 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
 script:
   - python manage.py migrate
-  - python -m unittest
+  - python manage.py test
 
 branches:
   only:
