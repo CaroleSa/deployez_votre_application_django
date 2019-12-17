@@ -22,7 +22,10 @@ class TestViews(TestCase):
 
     def test_add_user(self):
         # add user
-        self.user.objects.get(email=self.email).delete()
+        try:
+            self.user.objects.get(email=self.email).delete()
+        except self.user.DoesNotExist:
+            pass
         self.user.objects.create_user(id=self.id_user, username='Null', email=self.email, password=self.password)
 
         # try to get the user data
