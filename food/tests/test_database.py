@@ -20,7 +20,7 @@ class TestDatabase(TestCase):
         # create an food
         id_categorie = 1
         try:
-            Categorie.objects.get(id=id_categorie).delete()
+            Categorie.objects.get(name="name_test").delete()
         except Categorie.DoesNotExist:
             pass
         try:
