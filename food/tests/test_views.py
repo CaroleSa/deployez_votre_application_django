@@ -24,8 +24,8 @@ class TestViews(TestCase):
             self.user.objects.get(email=self.user_email).delete()
         except self.user.DoesNotExist:
             pass
-        self.user.objects.create_user(id='1', username='Null', email=self.user_email, password='testtest')
         self.id_user = 1
+        self.user.objects.create_user(id=self.id_user, username='Null', email=self.user_email, password='testtest')
 
         # create an food
         id_categorie = 1
@@ -50,13 +50,13 @@ class TestViews(TestCase):
 
     def test_add_favorites(self):
         # add favorites
-        food = Food.objects.get(id=self.id_food)
+        food = Food.objects.get(name="name_test")
         user = self.user.objects.get(id=self.id_user)
         food.favorites.add(user)
 
         # try to get the favorites data
         try:
-            self.user(id=self.id_user).food_set.get(id=self.id_food)
+            self.user(id=self.id_user).food_set.get(name="name_test")
             data = True
         except Food.DoesNotExist:
             data = False

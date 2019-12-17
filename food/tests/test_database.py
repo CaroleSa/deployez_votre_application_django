@@ -18,7 +18,6 @@ class TestDatabase(TestCase):
 
     def setUp(self):
         # create an food
-        id_categorie = 1
         try:
             Categorie.objects.get(name="name_test").delete()
         except Categorie.DoesNotExist:
@@ -29,7 +28,7 @@ class TestDatabase(TestCase):
             pass
 
         Categorie.objects.create(name="name_test")
-        categorie_id = Categorie.objects.get(id=id_categorie)
+        categorie_id = Categorie.objects.get(name="name_test")
         Food.objects.create(name="name_test", categorie=categorie_id,
                             nutrition_grade="A", url_picture="url_test",
                             link="link_test", energy="100",
