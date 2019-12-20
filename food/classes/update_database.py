@@ -6,12 +6,12 @@
 
 # imports
 from django.db.utils import IntegrityError
-from purbeurre.food.classes.call_api import CallApi
+from call_api import CallApi
 import os
 from django import setup
 os.environ['DJANGO_SETTINGS_MODULE'] = 'purbeurre.settings.production'
 setup()
-from purbeurre.food.models import Food, Categorie
+from models import Food, Categorie
 
 
 class UpdateDatabase:
