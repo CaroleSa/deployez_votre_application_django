@@ -7,7 +7,7 @@
 # imports
 from django.db.utils import IntegrityError
 from call_api import CallApi
-from models import Food, Categorie
+from .models import Food, Categorie
 
 
 class UpdateDatabase:
