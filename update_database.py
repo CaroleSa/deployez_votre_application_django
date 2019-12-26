@@ -75,3 +75,6 @@ class UpdateDatabase:
                         continue
                     except KeyError:
                         continue
+
+new_update_database = UpdateDatabase()
+new_update_database.insert_data()
